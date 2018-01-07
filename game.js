@@ -1,16 +1,50 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    let playerClasses = {
+    var playerClasses = {
         playerA: 'x',
         playerB: 'o'
     };
+    var playerNames = {
+        playerA: 'player - X',
+        playerB: 'player - O'
+    }
+    var playerResults={
+        playerA: 0,
+        playerB: 0
+    }
+    var resultPlayerA = document.querySelector('.resultPlayerA');
+    var namePlayerA = document.querySelector('.namePlayerA');
+    var resultPlayerB = document.querySelector('.resultPlayerB');
+    var namePlayerB = document.querySelector('.namePlayerB');
 
     let currentPlayer;
+    var nextPlayer;
     let emptyFields;
+    let roundCounter = 0;
+
+    initGame();
+
+    var changePlayerNames = document.querySelector('.changePlayerNames');
+    changePlayerNames.addEventListener('click', changeNames);
+
+    function changeNames(){
+        prompt('Type players name A:', '');
+        prompt('Type players name B:', '');
+    };
 
     function initGame() {
+        roundCounter++;
+        document.querySelector('.roundCounter').innerHTML = `Round: ${roundCounter}`;
+
+        namePlayerA.innerHTML = `${playerNames['playerA']}`
+        resultPlayerA.innerHTML = `${playerResults['playerA']}`
+        namePlayerB.innerHTML = `${playerNames['playerB']}`
+        resultPlayerB.innerHTML = `${playerResults['playerB']}`
+
+
         const fields = document.querySelectorAll('.board > div');
         currentPlayer = 'playerA';
+        nextPlayer = 'Start Game';
         emptyFields = 9;
 
         fields.forEach(field => {
@@ -20,16 +54,27 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function fieldClickHandler() {
+        if (currentPlayer === 'playerA') {
+            nextPlayer = playerNames['playerB'];
+            // nextPlayer = 'playerB';
+        }else{
+            nextPlayer = playerNames['playerA'];
+            // nextPlayer = 'playerA';
+        };
+        document.querySelector('.nextPlayer').innerHTML = `Now ${nextPlayer}`
+
         var playerClass = playerClasses[currentPlayer];
         this.classList.add(playerClass);
         emptyFields--;
-        console.log(emptyFields);
+        // console.log(emptyFields);
 
         currentPlayer = currentPlayer === 'playerA' ? 'playerB' : 'playerA';
         this.removeEventListener('click', fieldClickHandler);
 
         checkWinner();
     };
+
+
 
     function checkWinner(){
         const fields = document.querySelectorAll('.board > div');
@@ -72,18 +117,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (boardCheck.includes('xxx')) {
             setTimeout( () => {
                 alert('X wygrywa');
+                playerResults['playerA']++
                 initGame();
-                return;
             }, 100);
-
+            return;
         }
         if (boardCheck.includes('ooo')) {
             setTimeout( () => {
                 alert('O wygrywa');
+                playerResults['playerB']++
                 initGame();
-                return;
             }, 100);
-
+            return;
         }
         if (!emptyFields) {
             setTimeout( () => {
@@ -95,5 +140,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    initGame();
+
 });

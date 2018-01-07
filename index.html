@@ -11,7 +11,8 @@
 </head>
 <body>
     <div class="wrapper">
-        <span class="title">TickTackToe</span>
+        <h1 class="title">TickTackToe</h1>
+        <span class="roundCounter"></span>
         <div class="board">
             <div></div>
             <div></div>
@@ -22,6 +23,23 @@
             <div></div>
             <div></div>
             <div></div>
+        </div>
+
+
+        <div class="results flex">
+            <div class="score">
+                <span class="namePlayerA"></span>
+                <span class="resultPlayerA playerScore"></span>
+            </div>
+            <span class="nextPlayer"></span>
+            <div class="score">
+                <span class="namePlayerB"></span>
+                <span class="resultPlayerB playerScore"></span>
+            </div>
+        </div>
+        <div class="settings flex">
+            <button class="changePlayerNames">Change Player Names</button>
+            <button class="resetGame">Reset</button>
         </div>
     </div>
 </body>
