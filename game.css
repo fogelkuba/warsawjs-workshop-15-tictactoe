@@ -16,12 +16,12 @@
 	border: 2px solid grey;
 }
 
-.red {
+.x {
 	/* background-color: crimson; */
     background-image: url("images/ticTac.png");
 }
 
-.blue {
+.o {
 	/* background-color: cornflowerblue; */
     background-image: url("images/ticTac.png");
     background-position: 100px;
