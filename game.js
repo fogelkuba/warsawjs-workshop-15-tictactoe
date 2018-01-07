@@ -28,11 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         currentPlayer = currentPlayer === 'playerA' ? 'playerB' : 'playerA';
         this.removeEventListener('click', fieldClickHandler);
 
-        // if (!emptyFields) {
-        //     console.log('Koniec Gry');
-        //     alert('Koniec Gry!');
-        // }
-
         checkWinner();
     };
 

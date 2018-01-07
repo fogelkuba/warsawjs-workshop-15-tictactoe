@@ -2,6 +2,18 @@
 	box-sizing: border-box;
 }
 
+body{
+    /* background-image: url("images/ticTac.png");
+    background-size: 30px; */
+}
+
+.wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .board {
 	height: 300px;
 	width: 300px;
