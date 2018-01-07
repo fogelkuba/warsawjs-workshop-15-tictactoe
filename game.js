@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fields.forEach(field => {
             field.addEventListener('click', fieldClickHandler)
         })
+        fields.forEach( field => field.removeAttribute('class'));
     };
 
     function fieldClickHandler() {
