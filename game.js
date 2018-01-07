@@ -41,18 +41,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initGame();
 
-    var changePlayerNames = document.querySelector('.changePlayerNames');
-    changePlayerNames.addEventListener('click', changeNames);
+    var changeNameForA = document.querySelector('.changePlayerNamesA');
+    changeNameForA.addEventListener('click', changeNameA);
+    var changeNameForB = document.querySelector('.changePlayerNamesB');
+    changeNameForB.addEventListener('click', changeNameB);
 
-    function changeNames(){
+    function changeNameA(){
         var A = prompt('Type players name A:', '');
         if (A != null) {
             playerNames['playerA'] = A;
         }
+        initGame() ;
+    };
+    function changeNameB(){
         var B = prompt('Type players name B:', '');
         if (B != null) {
-            playerNames['playerA'] = B;
+            playerNames['playerB'] = B;
         }
+        initGame() ;
     };
 
     function initGame() {
