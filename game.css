@@ -10,8 +10,15 @@ body{
 .wrapper{
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+.title{
+    font-size: 30px;
+    padding: 20px;
+    color: black;
 }
 
 .board {
