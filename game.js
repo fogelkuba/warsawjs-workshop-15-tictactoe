@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (boardCheck.includes('xxx')) {
             setTimeout( () => {
-                alert('X wygrywa');
+                alert(`${playerNames['playerA']} Wins!`);
                 playerResults['playerA']++
                 initGame();
             }, 100);
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (boardCheck.includes('ooo')) {
             setTimeout( () => {
-                alert('O wygrywa');
+                alert(`${playerNames['playerB']} Wins!`);
                 playerResults['playerB']++
                 initGame();
             }, 100);
