@@ -22,6 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     let emptyFields;
     let roundCounter = 0;
 
+    var resetGame = document.querySelector('.resetGame');
+    console.log(resetGame)
+    resetGame.addEventListener('click', resetGameHandler);
+    function resetGameHandler(){
+        playerNames = {
+            playerA: 'player - X',
+            playerB: 'player - O'
+        };
+        playerResults={
+            playerA: 0,
+            playerB: 0
+        };
+        roundCounter = 0;
+        console.log('resetGame');
+        initGame();
+    }
+
     initGame();
 
     var changePlayerNames = document.querySelector('.changePlayerNames');
@@ -53,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fields.forEach( field => field.removeAttribute('class'));
     };
 
-    function fieldClickHandler() {
+    function displyPlayer(){
         if (currentPlayer === 'playerA') {
             nextPlayer = playerNames['playerB'];
             // nextPlayer = 'playerB';
@@ -62,6 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // nextPlayer = 'playerA';
         };
         document.querySelector('.nextPlayer').innerHTML = `Now ${nextPlayer}`
+    }
+
+    function fieldClickHandler() {
+        displyPlayer();
 
         var playerClass = playerClasses[currentPlayer];
         this.classList.add(playerClass);
