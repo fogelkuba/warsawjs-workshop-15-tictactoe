@@ -45,8 +45,14 @@ document.addEventListener('DOMContentLoaded', function() {
     changePlayerNames.addEventListener('click', changeNames);
 
     function changeNames(){
-        prompt('Type players name A:', '');
-        prompt('Type players name B:', '');
+        var A = prompt('Type players name A:', '');
+        if (A != null) {
+            playerNames['playerA'] = A;
+        }
+        var B = prompt('Type players name B:', '');
+        if (B != null) {
+            playerNames['playerA'] = B;
+        }
     };
 
     function initGame() {
