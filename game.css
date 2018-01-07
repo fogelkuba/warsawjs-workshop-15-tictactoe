@@ -158,3 +158,6 @@ button:hover{
 .settings{
     box-shadow: 5px 5px 0 #80C5A1;
 }
+.nextPlayer{
+    display: none;
+}
