@@ -17,9 +17,12 @@
 }
 
 .red {
-	background-color: crimson;
+	/* background-color: crimson; */
+    background-image: url("images/ticTac.png");
 }
 
 .blue {
-	background-color: cornflowerblue;
+	/* background-color: cornflowerblue; */
+    background-image: url("images/ticTac.png");
+    background-position: 100px;
 }

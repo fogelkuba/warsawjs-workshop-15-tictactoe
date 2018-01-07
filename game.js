@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function initGame() {
         const fields = document.querySelectorAll('.board > div');
+
+        currentPlayer = 'playerA';
         fields.forEach(field => {
             field.addEventListener('click', fieldClickHandler)
         })
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.add(playerClass);
 
         currentPlayer = currentPlayer === 'playerA' ? 'playerB' : 'playerA';
+        this.removeEventListener('click', fieldClickHandler);
     };
 
     initGame();
