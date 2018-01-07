@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    let playerClasses = {
+        playerA: 'red',
+        playerB: 'blue'
+    };
+
+    let currentPlayer;
+
     function initGame() {
         const fields = document.querySelectorAll('.board > div');
         fields.forEach(field => {
@@ -8,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     function fieldClickHandler() {
-        console.log('hello', this)
+        var playerClass = playerClasses[currentPlayer];
+        this.classList.add(playerClass);
+
+        currentPlayer = currentPlayer === 'playerA' ? 'playerB' : 'playerA';
     };
 
     initGame();
