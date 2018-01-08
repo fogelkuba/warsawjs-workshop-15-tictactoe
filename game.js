@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         playerA: 'player - X',
         playerB: 'player - O'
     }
-    var playerResults={
+    var playerResults = {
         playerA: 0,
         playerB: 0
     }
@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var resetGame = document.querySelector('.resetGame');
     console.log(resetGame)
     resetGame.addEventListener('click', resetGameHandler);
-    function resetGameHandler(){
+    function resetGameHandler() {
         playerNames = {
             playerA: 'player - X',
             playerB: 'player - O'
         };
-        playerResults={
+        playerResults = {
             playerA: 0,
             playerB: 0
         };
@@ -39,6 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
         initGame();
     }
 
+    var modalAlert = document.querySelector('.modal');
+    modalAlert.addEventListener('click', ()=> {
+        modalAlert.classList.add('hidden');
+        initGame();
+    })
+    console.log(modalAlert)
+
     initGame();
 
     var changeNameForA = document.querySelector('.changePlayerNamesA');
@@ -46,19 +53,19 @@ document.addEventListener('DOMContentLoaded', function() {
     var changeNameForB = document.querySelector('.changePlayerNamesB');
     changeNameForB.addEventListener('click', changeNameB);
 
-    function changeNameA(){
+    function changeNameA() {
         var A = prompt('Type players name A:', '');
         if (A != null) {
             playerNames['playerA'] = A;
         }
-        initGame() ;
+        initGame();
     };
-    function changeNameB(){
+    function changeNameB() {
         var B = prompt('Type players name B:', '');
         if (B != null) {
             playerNames['playerB'] = B;
         }
-        initGame() ;
+        initGame();
     };
 
     function initGame() {
@@ -70,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
         namePlayerB.innerHTML = `${playerNames['playerB']}`
         resultPlayerB.innerHTML = `${playerResults['playerB']}`
 
-
         const fields = document.querySelectorAll('.board > div');
         currentPlayer = 'playerA';
         nextPlayer = 'Start Game';
@@ -79,16 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
         fields.forEach(field => {
             field.addEventListener('click', fieldClickHandler)
         })
-        fields.forEach( field => field.removeAttribute('class'));
+        fields.forEach(field => field.removeAttribute('class'));
     };
 
-    function displyPlayer(){
+    function displyPlayer() {
         if (currentPlayer === 'playerA') {
             nextPlayer = playerNames['playerB'];
-            // nextPlayer = 'playerB';
-        }else{
+        } else {
             nextPlayer = playerNames['playerA'];
-            // nextPlayer = 'playerA';
         };
         document.querySelector('.nextPlayer').innerHTML = `Now ${nextPlayer}`
     }
@@ -101,15 +105,15 @@ document.addEventListener('DOMContentLoaded', function() {
         emptyFields--;
         // console.log(emptyFields);
 
-        currentPlayer = currentPlayer === 'playerA' ? 'playerB' : 'playerA';
+        currentPlayer = currentPlayer === 'playerA'
+            ? 'playerB'
+            : 'playerA';
         this.removeEventListener('click', fieldClickHandler);
 
         checkWinner();
     };
 
-
-
-    function checkWinner(){
+    function checkWinner() {
         const fields = document.querySelectorAll('.board > div');
 
         /*
@@ -148,30 +152,32 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
 
         if (boardCheck.includes('xxx')) {
-            setTimeout( () => {
-                alert(`${playerNames['playerA']} Wins!`);
+            setTimeout(() => {
+                // alert(`${playerNames['playerA']} Wins!`);
                 playerResults['playerA']++
-                initGame();
+                //here check which combination wins
+                modalAlert.classList.remove('hidden');
+                // initGame();
             }, 100);
             return;
         }
         if (boardCheck.includes('ooo')) {
-            setTimeout( () => {
-                alert(`${playerNames['playerB']} Wins!`);
+            setTimeout(() => {
+                // alert(`${playerNames['playerB']} Wins!`);
                 playerResults['playerB']++
-                initGame();
+                //here check which combination wins
+                modalAlert.classList.remove('hidden');
+                // initGame();
             }, 100);
             return;
         }
         if (!emptyFields) {
-            setTimeout( () => {
-                alert('Remis');
-                initGame();
+            setTimeout(() => {
+                modalAlert.classList.remove('hidden');
+                // alert('Remis');
+                // initGame();
                 return;
             }, 100);
-
         }
     };
-
-
 });
