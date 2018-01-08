@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var modalAlert = document.querySelector('.modal');
+    var modalContent = document.querySelector('.modal > .modalContent')
     modalAlert.addEventListener('click', ()=> {
         modalAlert.classList.add('hidden');
         initGame();
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // alert(`${playerNames['playerA']} Wins!`);
                 playerResults['playerA']++
                 //here check which combination wins
+                                modalContent.innerHTML = `${playerNames['playerA']} wins!` ;
                 modalAlert.classList.remove('hidden');
                 // initGame();
             }, 100);
@@ -166,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // alert(`${playerNames['playerB']} Wins!`);
                 playerResults['playerB']++
                 //here check which combination wins
+                modalContent.innerHTML = `${playerNames['playerB']} wins!` ;
                 modalAlert.classList.remove('hidden');
                 // initGame();
             }, 100);
@@ -173,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (!emptyFields) {
             setTimeout(() => {
+                modalContent.innerHTML = "It's a draw, play again!";
                 modalAlert.classList.remove('hidden');
                 // alert('Remis');
                 // initGame();

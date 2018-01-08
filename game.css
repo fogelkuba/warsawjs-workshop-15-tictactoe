@@ -24,7 +24,7 @@ body:after{
     width: 100%;
     height: 100%;
     z-index: -1;
-    opacity: 0.4;
+    opacity: 0.6;
 }
 
 @keyframes backgroundAnimation {
@@ -166,6 +166,7 @@ button:hover{
 }
 .modal{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: absolute;
@@ -176,13 +177,23 @@ button:hover{
     font-family: inherit;
 }
 .modalContent{
+    position: relative;
     background: #fff;
     padding: 40px;
     border-radius: 10px;
+    font-size: 30px;
+    box-shadow: 5px 5px 0 #80C5A1;
 }
 .modalContent:after{
     content: 'Click anywhere to exit';
-    color: grey;
+    position: absolute;
+    width: 200%;
+    bottom: -40px;
+    left: -50%;
+    right: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 0.5em;
 }
 .hidden{
     display: none;
